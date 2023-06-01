@@ -9,8 +9,6 @@ public interface Controller {
 
   /**
    * Takes in the player's system input and delegates them to classes to run the game of battleship
-   *
-   * @throws throws an IO exception if an error occurs
    */
   public void run() throws IOException;
 }

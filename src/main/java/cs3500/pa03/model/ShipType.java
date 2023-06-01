@@ -4,9 +4,13 @@ package cs3500.pa03.model;
  * Represents the possible ship types used in this program
  */
 public enum ShipType {
+
+  /**
+   * ShipType can be either carrier, battleship, destroyer, or submarine
+   */
   CARRIER(6), BATTLESHIP(5), DESTROYER(4), SUBMARINE(3);
 
-  public final int size;
+  private int size;
 
   /**
    * Constructor used for the enum ShipType
