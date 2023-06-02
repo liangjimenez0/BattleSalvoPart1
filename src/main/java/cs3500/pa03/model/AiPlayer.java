@@ -91,16 +91,22 @@ public class AiPlayer implements Player {
     GameOver gameOver = new GameOver();
     int numberOfShots = Math.min(gameOver.shipsNotSunk(listOfShips, aiBoard).size(),
         aiBoard.countEmptyCoordinates());
+    int size = shotsTaken.size();
 
-    for (int i = 0; i < numberOfShots; i++) {
+    while (shotsTaken.size() != size + numberOfShots) {
       int x = random.nextInt(aiBoard.getCoords()[0].length);
       int y = random.nextInt(aiBoard.getCoords().length);
       Coord coord = new Coord(x, y);
 
-      if (!shotsTaken.contains(coord)) {
-        this.shotsTaken.add(coord);
-      } else {
-        takeShots();
+      for (Coord[] coordinate : playerBoard.getCoords()) {
+        for (Coord c : coordinate) {
+          if ((c.getX() == coord.getX() && (c.getPosY() == coord.getPosY()))) {
+            if (!(c.getIsMiss()) && !(c.getIsHit())) {
+              this.shotsTaken.add(coord);
+            }
+
+          }
+        }
       }
     }
 
